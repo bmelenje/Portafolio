@@ -1,0 +1,141 @@
+@use "../../../styles/variables" as *;
+
+.skills {
+  position: relative;
+  background: radial-gradient(
+      circle at top right,
+      rgba(20, 184, 166, 0.15),
+      transparent 60%
+    ),
+    linear-gradient(180deg, $bg-dark, $bg-dark-soft);
+  padding: 140px 0;
+  overflow: hidden;
+}
+
+/* Glow decorativo */
+.skills::before {
+  content: "";
+  position: absolute;
+  bottom: -200px;
+  left: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.25),
+    transparent 70%
+  );
+  filter: blur(120px);
+}
+
+.skills__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ===== HEADER ===== */
+.skills__header {
+  max-width: 720px;
+  margin-bottom: 80px;
+
+  h2 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: #cbd5f5;
+    line-height: 1.7;
+  }
+}
+
+/* ===== GRID ===== */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+/* ===== CARD ===== */
+.skills__card {
+  background: linear-gradient(
+    160deg,
+    rgba(15, 23, 42, 0.95),
+    rgba(2, 6, 23, 0.9)
+  );
+  border-radius: 22px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: $shadow-soft;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: $shadow-strong;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+    margin-bottom: 28px;
+    color: #ffffff;
+  }
+}
+
+/* ===== COLOR POR ÁREA ===== */
+.skills__card.frontend {
+  border-top: 3px solid $secondary;
+}
+
+.skills__card.backend {
+  border-top: 3px solid $primary;
+}
+
+.skills__card.iot {
+  border-top: 3px solid #f59e0b;
+}
+
+.skills__card.tools {
+  border-top: 3px solid $accent;
+}
+
+/* ===== TAGS ===== */
+.skills__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+
+  li {
+    background: rgba(56, 189, 248, 0.12);
+    color: #7dd3fc;
+    font-size: 0.85rem;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 500;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    backdrop-filter: blur(6px);
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: rgba(56, 189, 248, 0.25);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills {
+    padding: 100px 0;
+  }
+}
