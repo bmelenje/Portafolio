@@ -8,7 +8,7 @@ export default function Hero() {
         {/* Columna izquierda: Texto */}
         <div className="hero__content">
           <h1 className="hero__title">
-            Desarrollador Full Stack <br />
+            Ingeniero en Electronica y Telecomunicaciones <br />
             <span className="hero__highlight">& Entusiasta IoT</span>
           </h1>
 

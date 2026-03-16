@@ -1,5 +1,7 @@
+@use "../../../styles/variables" as *;
+
 .contact {
-  background: linear-gradient(180deg, #f8fafc, #ffffff);
+  background: linear-gradient(180deg, #f8fafc, #ffffff); // Tu fondo blanco original
   padding: 120px 0;
 }
 
@@ -15,14 +17,14 @@
   margin: 0 auto 64px;
 
   h2 {
-    font-size: 2.4rem;
-    font-weight: 700;
+    font-size: 2.6rem;
+    font-weight: 800;
     margin-bottom: 16px;
-    color: #020617;
+    color: #020617; // Azul casi negro para máximo contraste
   }
 
   p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #475569;
     line-height: 1.6;
   }
@@ -36,34 +38,61 @@
 
 .contact__card {
   background: white;
-  padding: 36px;
-  border-radius: 18px;
-  box-shadow: 0 15px 40px rgba(2, 6, 23, 0.08);
+  padding: 40px 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.05); // Sombra muy sutil
   text-decoration: none;
   color: #020617;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(2, 6, 23, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .contact__icon-wrapper {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+    
+    // Colores específicos para cada icono
+    &.email { color: #ea4335; }
+    &.linkedin { color: #0077b5; }
+    &.github { color: #333; }
+  }
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(2, 6, 23, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(2, 6, 23, 0.1);
+    border-color: rgba(2, 6, 23, 0.1);
+
+    .contact__icon-wrapper {
+      transform: scale(1.15);
+    }
   }
 
   span {
     display: block;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-top: 16px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 8px;
   }
 
   small {
     display: block;
     margin-top: 6px;
     color: #64748b;
+    font-size: 0.9rem;
+    word-break: break-all; // Para que el email no se corte en móviles
   }
 }
 
 @media (max-width: 900px) {
   .contact__content {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .contact__header h2 {
+    font-size: 2.2rem;
   }
 }

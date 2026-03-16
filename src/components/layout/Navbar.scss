@@ -1,54 +1,92 @@
+@use "../../styles/variables" as *;
+
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
-  background: rgba(2, 6, 23, 0.85);
-  backdrop-filter: blur(8px);
+  z-index: 1000;
+  background: rgba(2, 6, 23, 0.7); // Un poco más transparente para el blur
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
 }
-
 
 .navbar__container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 16px 40px; // Un poco más compacto se ve más moderno
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-
-.navbar__nav a {
-  color: #e5e7eb;
-  font-weight: 500;
-
-  &:hover {
-    color: white;
-  }
-}
-
-.hero {
-  padding-top: 96px;
-}
-
-
 .navbar__logo {
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 800;
+  font-size: 1.4rem;
   color: white;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+
+  span {
+    color: #14b8a6; // Tu color de marca
+    font-weight: 400;
+  }
 }
 
 .navbar__nav {
   display: flex;
+  align-items: center;
   gap: 32px;
 
   a {
-    color: #cbd5f5;
-    font-size: 0.95rem;
-    transition: color 0.2s ease;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
 
-    &:hover {
-      color: white;
+    &:not(.navbar__cta):hover {
+      color: #14b8a6;
+      transform: translateY(-2px);
     }
+  }
+}
+
+// El botón que le da el toque de "Venta"
+.navbar__cta {
+  background: linear-gradient(90deg, #14b8a6, #0d9488);
+  color: white !important;
+  padding: 8px 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.2);
+  
+  svg {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4);
+    
+    svg {
+      transform: translate(2px, -2px); // Efecto de despegue del cohete
+    }
+  }
+}
+
+// Ajuste para que el contenido no quede oculto bajo el navbar
+.hero {
+  padding-top: 100px;
+}
+
+@media (max-width: 850px) {
+  .navbar__nav a:not(.navbar__cta) {
+    display: none; // Preparado para menú hamburguesa
   }
 }
